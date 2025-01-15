@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.apiconnect"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -32,6 +32,8 @@ android {
 }
 
 dependencies {
+    implementation ("androidx.cardview:cardview:1.0.0")
+    implementation ("androidx.recyclerview:recyclerview:1.3.2")
     implementation ("com.google.code.gson:gson:2.10.1")
     implementation ("com.cedarsoftware:json-io:4.19.1")
     implementation(libs.appcompat)

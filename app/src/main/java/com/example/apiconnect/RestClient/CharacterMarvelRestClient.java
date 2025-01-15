@@ -11,6 +11,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 
 /**
  * get Data from Marvel WebService
@@ -28,6 +29,7 @@ public class CharacterMarvelRestClient {
     //URL de la API que permet obtenir la llista de personatges.
     //Es forma partint de la base donat que la URL és http://gateway.marvel.com/v1/public/characters
     private String listCharactersEndpoint = baseUrl + "/characters";
+    private String listOfComics = baseUrl + "/comics";
 
     public CharacterMarvelRestClient(String publicKey, String privateKey){
         this.publicKey = publicKey;
@@ -35,7 +37,7 @@ public class CharacterMarvelRestClient {
     }
 
 
-    public CharacterComic[] ListCharacters() throws IOException {
+    public CharacterComic[] listCharacters() throws IOException {
         //Generem l'objecte URL que fa servir HttpURLConnection
         URL url = new URL(listCharactersEndpoint + "?" + getRequestParameters());
 
@@ -57,6 +59,8 @@ public class CharacterMarvelRestClient {
         Data d = new Gson().fromJson(jsonObject.get("data"), Data.class);
         return d.results;
     }
+
+
 
     public CharacterComic FindById(int id) throws IOException {
         URL url = new URL(listCharactersEndpoint +

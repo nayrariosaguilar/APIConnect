@@ -5,4 +5,23 @@ public class CharacterComic {
     Thumbnail thumbnail;
     String name;
     String description;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Thumbnail getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public CharacterComic(String name) {
+        this.name = name;
+    }
+    public String getName() {
+        return name;
+    }
 }
