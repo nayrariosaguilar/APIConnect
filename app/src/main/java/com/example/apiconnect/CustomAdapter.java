@@ -39,7 +39,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
      * by RecyclerView
      */
     public CustomAdapter(CharacterComic[] dataSet) {
-        this.localDataSet = dataSet;
+        localDataSet = dataSet;
     }
 
     // Create new views (invoked by the layout manager)

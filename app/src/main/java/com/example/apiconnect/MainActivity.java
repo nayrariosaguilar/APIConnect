@@ -33,8 +33,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
         executor = Executors.newSingleThreadExecutor();
         handler = new Handler(Looper.getMainLooper());
-        inicioMovies();
-        inicioElementos();
+        //inicioMovies();
         pedirCharactersApiMarvel();
     }
 
