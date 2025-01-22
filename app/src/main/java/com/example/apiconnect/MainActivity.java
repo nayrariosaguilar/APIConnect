@@ -1,5 +1,6 @@
 package com.example.apiconnect;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -15,7 +16,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.apiconnect.RestClient.CharacterComic;
 import com.example.apiconnect.RestClient.CharacterMarvelRestClient;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -48,10 +52,14 @@ public class MainActivity extends AppCompatActivity {
              //al constructor le paso publi/private key
             CharacterMarvelRestClient restClient =  new CharacterMarvelRestClient(marvelPublicKey,marvelPrivateKey);
             try {
+                // Obtener la lista de personajes desde la API
                 listCharacter = restClient.listCharacters();
+
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                e.printStackTrace();
             }
+
+
             handler.post(new Runnable() {
                 @Override
                 public void run() {
@@ -76,4 +84,20 @@ public class MainActivity extends AppCompatActivity {
         listCharacter[1] = new CharacterComic("naysita2");
         listCharacter[2] = new CharacterComic("naysita3");
     }
+    private void readHttpWriteFile(String urlString, String nameFileOutput) {
+        try (FileOutputStream fos = openFileOutput(nameFileOutput, Context.MODE_PRIVATE);
+             InputStream inputStream = new URL(urlString).openStream()) {
+            byte[] buffer = new byte[1024];
+            int bytesRead;
+            while ((bytesRead = inputStream.read(buffer)) != -1) {
+                fos.write(buffer, 0, bytesRead);
+            }
+
+            System.out.println("Image downloaded and saved as: " + nameFileOutput);
+
+        } catch (IOException e) {
+            System.err.println("Error downloading image: " + e.getMessage());
+        }
+    }
+
 }

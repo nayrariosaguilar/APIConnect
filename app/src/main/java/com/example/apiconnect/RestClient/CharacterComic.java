@@ -10,6 +10,10 @@ public class CharacterComic {
         return description;
     }
 
+    public int getId() {
+        return id;
+    }
+
     public Thumbnail getThumbnail() {
         return thumbnail;
     }
