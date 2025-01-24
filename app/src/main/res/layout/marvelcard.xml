@@ -11,25 +11,13 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="326dp">
-
+        <TextView
+            android:id="@+id/tvCharacterName"
+            android:layout_width="67dp"
+            android:layout_height="71dp"
+            android:layout_marginBottom="38dp" />
     </RelativeLayout>
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:srcCompat="@tools:sample/avatars" />
 
-    <TextView
-        android:id="@+id/tvCharacterName"
-        android:layout_width="67dp"
-        android:layout_height="71dp"
-        android:layout_marginBottom="38dp" />
 
-    <TextView
-        android:id="@+id/Description"
-        android:layout_width="205dp"
-        android:layout_height="167dp"
-        android:rotationY="19"
-        android:text="TextView" />
 </androidx.cardview.widget.CardView>

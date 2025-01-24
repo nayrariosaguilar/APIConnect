@@ -4,6 +4,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.view.View;
+import android.widget.AdapterView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -55,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
                 // Obtener la lista de personajes desde la API
                 listCharacter = restClient.listCharacters();
 
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -78,26 +81,13 @@ public class MainActivity extends AppCompatActivity {
         recycler.setAdapter(customAdapter);
     }
 
+
     private void inicioMovies() {
         listCharacter = new CharacterComic[3];
        listCharacter[0] = new CharacterComic("naysita");
         listCharacter[1] = new CharacterComic("naysita2");
         listCharacter[2] = new CharacterComic("naysita3");
     }
-    private void readHttpWriteFile(String urlString, String nameFileOutput) {
-        try (FileOutputStream fos = openFileOutput(nameFileOutput, Context.MODE_PRIVATE);
-             InputStream inputStream = new URL(urlString).openStream()) {
-            byte[] buffer = new byte[1024];
-            int bytesRead;
-            while ((bytesRead = inputStream.read(buffer)) != -1) {
-                fos.write(buffer, 0, bytesRead);
-            }
 
-            System.out.println("Image downloaded and saved as: " + nameFileOutput);
-
-        } catch (IOException e) {
-            System.err.println("Error downloading image: " + e.getMessage());
-        }
-    }
 
 }

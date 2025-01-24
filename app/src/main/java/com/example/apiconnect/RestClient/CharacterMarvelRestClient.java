@@ -134,6 +134,7 @@ public class CharacterMarvelRestClient {
     }
 
 
+
     /*
      * Funció auxiliar que retorna els paràmetres auxiliars de la petició HTTP
      *
